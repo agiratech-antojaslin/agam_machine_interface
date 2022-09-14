@@ -4,6 +4,8 @@ const { ReadlineParser } = require('@serialport/parser-readline');
 const parser = new ReadlineParser();
 const bintotext = require("bintotext");
 const { base64encode, base64decode } = require('nodejs-base64');
+const crypto = require("crypto");
+const algorithm = "md5"; 
 
 var serialPort = new SerialPort( {
   path: '/dev/pts/2',
@@ -24,8 +26,21 @@ serialPort.on("open",function () {
 
     // FOR BASE64
 
-    let decoded = base64decode(data.toString()); 
-    console.log(decoded);
+    // let decoded = base64decode(data.toString()); 
+    // console.log(decoded);
+
+    // FOR HEX
+
+    const buf = Buffer.from(data, 'hex');
+    var text = buf.toString('utf8')
+    console.log(text);
+
+    // FOR HASH
+
+    // const decipher = crypto.createDecipheriv(algorithm, Securitykey, initVector);
+    // let decryptedData = decipher.update(encryptedData, "hex", "utf-8");
+    // decryptedData += decipher.final("utf8");
+    // console.log("Decrypted message: " + decryptedData);
     
   });
 });
