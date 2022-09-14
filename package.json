@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@serialport/parser-readline": "^10.3.0",
+    "bintotext": "^1.1.1",
+    "nodejs-base64": "^2.0.0",
+    "serialport": "^10.4.0"
+  }
+}
